@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Career coaching that turns your skills into a high-paying career. Book a free strategy call today.">
+<title>Expert Career — Land the Career You Actually Want</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #1e1e1e;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --text: #f0ede8;
+    --muted: #888;
+    --white: #ffffff;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-cta {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 10px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: none;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    display: none;
+  }
+
+  .hero-line {
+    position: absolute;
+    top: 0;
+    right: 200px;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0.15;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 420px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: #000;
+    padding: 16px 34px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--text);
+    border-color: var(--muted);
+  }
+
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 40px;
+    position: relative;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 32px;
+  }
+
+  .stat-item {
+    background: var(--surface);
+    padding: 24px 20px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .testimonial-mini {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  .testimonial-mini p {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .testimonial-mini .author {
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    font-style: normal;
+  }
+
+  .section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 60px;
+  }
+
+  .problems {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .problem-item {
+    background: var(--surface);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+
+  .problem-item:hover {
+    background: #161616;
+  }
+
+  .problem-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .problem-title {
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .problem-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .process-section {
+    padding: 100px 40px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .process-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .step {
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .step:hover {
+    border-left-color: var(--gold);
+  }
+
+  .step-num {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 0.87rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .testimonials-section {
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 60px;
+  }
+
+  .tcard {
+    background: var(--surface);
+    padding: 40px 36px;
+    position: relative;
+  }
+
+  .tcard::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 16px;
+    left: 28px;
+    line-height: 1;
+  }
+
+  .tcard-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tcard-author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tcard-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .tcard-role {
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+
+
+
+  footer {
+    padding: 40px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--gold);
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+
+  .hero-right {
+    animation: fadeUp 0.7s ease 0.5s both;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+
+    .hero {
+      padding: 100px 20px 60px;
+    }
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .hero-line { display: none; }
+
+    .problems {
+      grid-template-columns: 1fr;
+    }
+
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .section {
+      padding: 70px 20px;
+    }
+
+    .process-section {
+      padding: 70px 20px;
+    }
+
+    .testimonials-section {
+      padding: 70px 20px;
+    }
+
+    footer {
+      padding: 30px 20px;
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Expert Career</div>
+  <a href="#book" class="nav-cta">Book Free Call</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">Career Strategy</div>
+      <h1>Stop Applying.<br>Start <em>Landing.</em></h1>
+      <p class="hero-sub">You have the skills. You're just not positioning them right. I help ambitious professionals land high-paying roles without endless applications or hoping someone notices.</p>
+      <div class="hero-actions">
+        <a href="#process" class="btn-primary">See How It Works</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-num">94%</div>
+            <div class="stat-label">Land roles in 90 days</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3.2x</div>
+            <div class="stat-label">Average salary increase</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Clients placed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4.9</div>
+            <div class="stat-label">Average client rating</div>
+          </div>
+        </div>
+        <div class="testimonial-mini">
+          <p>"I went from 6 months of silence to 3 offers in 5 weeks. The positioning work alone was worth everything."</p>
+          <span class="author">Marcus T. — Now Senior Product Manager at Stripe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <div class="section-tag">The Problem</div>
+  <h2>Why talented people<br>stay <em>stuck</em></h2>
+  <p class="section-sub">It's not your experience. It's how you're presenting it. Most job seekers make the same three mistakes.</p>
+  <div class="problems">
+    <div class="problem-item">
+      <div class="problem-num">01</div>
+      <div class="problem-title">No clear positioning</div>
+      <div class="problem-desc">You're blending in instead of standing out. Recruiters see hundreds of profiles. Without a clear angle, you're invisible.</div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">02</div>
+      <div class="problem-title">Sending resumes into the void</div>
+      <div class="problem-desc">Mass applying feels productive but rarely works. 80% of roles are filled before they're even posted.</div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">03</div>
+      <div class="problem-title">No system, just hope</div>
+      <div class="problem-desc">Without a repeatable outreach strategy, you're relying on luck. That's not a plan, that's a waiting game.</div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section" id="process">
+  <div class="process-inner">
+    <div class="section-tag">The Process</div>
+    <h2>A clear path from<br><em>overlooked to hired</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">STEP 01</div>
+        <div class="step-title">Positioning Audit</div>
+        <div class="step-desc">We identify your highest-value skills, define your target role, and build a clear professional identity that makes you the obvious choice.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 02</div>
+        <div class="step-title">Outreach System</div>
+        <div class="step-desc">No more mass applying. You get a targeted strategy to reach decision-makers directly, before the role goes public.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">STEP 03</div>
+        <div class="step-title">Interview Mastery</div>
+        <div class="step-desc">We run mock interviews, handle your weak spots, and give you frameworks to close the offer confidently.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials-section">
+  <div class="section-tag">Results</div>
+  <h2>Real people.<br><em>Real outcomes.</em></h2>
+  <div class="testimonials-grid">
+    <div class="tcard">
+      <p class="tcard-text">I had been job searching for 8 months. After one session we rewrote my LinkedIn and I had a recruiter reach out within 4 days. Landed a role at 40% more than my last job.</p>
+      <div class="tcard-author">
+        <span class="tcard-name">Sarah K.</span>
+        <span class="tcard-role">Marketing Director — Tech Sector</span>
+      </div>
+    </div>
+    <div class="tcard">
+      <p class="tcard-text">The outreach system is different from anything else out there. I stopped applying cold and started getting real conversations. Two offers in 6 weeks after years of going nowhere.</p>
+      <div class="tcard-author">
+        <span class="tcard-name">David O.</span>
+        <span class="tcard-role">Senior Engineer — SaaS Startup</span>
+      </div>
+    </div>
+    <div class="tcard">
+      <p class="tcard-text">I knew I was undervalued but didn't know how to change it. The positioning work completely changed how companies saw me. First role I applied for after coaching offered me the job.</p>
+      <div class="tcard-author">
+        <span class="tcard-name">Priya M.</span>
+        <span class="tcard-role">UX Lead — Finance Industry</span>
+      </div>
+    </div>
+    <div class="tcard">
+      <p class="tcard-text">Went from zero callbacks to three interviews in two weeks. The resume rewrite alone made it feel like a different person on paper. Exactly who I wanted to be seen as.</p>
+      <div class="tcard-author">
+        <span class="tcard-name">James R.</span>
+        <span class="tcard-role">Operations Manager — Logistics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer>
+  <div class="footer-logo">Expert Career</div>
+  <div class="footer-copy">© 2025 Expert Career Coaching. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
